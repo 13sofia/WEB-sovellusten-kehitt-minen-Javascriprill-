@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise 2 - JavaScript BOM & DOM</title>
+</head>
+<body>
+
+  <h2>Exercise 2</h2>
+
+  <div id="exercise2"></div>
+
+  <script>
+    // Exercise 2: Function that writes a line of text 50 times
+    function repeatingText() {
+      let output = "";
+      for (let i = 1; i <= 50; i++) {
+        output += "This is line number " + i + "<br>";
+      }
+      document.getElementById("exercise2").innerHTML = output;
+    }
+
+    // Call the function to display the text
+    repeatingText();
+  </script>
+
+</body>
+</html>
 
