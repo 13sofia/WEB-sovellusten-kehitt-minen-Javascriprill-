@@ -27,3 +27,111 @@
 </body>
 </html>
 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise 3 - JavaScript BOM & DOM</title>
+</head>
+<body>
+
+  <h2>Exercise 3</h2>
+  <p>Testing browser detection and redirection...</p>
+
+  <script>
+    // Exercise 3: Check if the browser is Mozilla and redirect accordingly
+
+    // Get user agent string in lowercase for easier comparison
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    if (userAgent.includes("firefox")) {
+      // If the user is using Mozilla Firefox
+      window.location.href = "http://www.mozilla.org";
+    } else {
+      // If the user is NOT using Firefox, redirect to another site
+      window.location.href = "http://example.com";
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise 4 - JavaScript BOM & DOM</title>
+</head>
+<body>
+
+  <h2>Exercise 4</h2>
+
+  <div id="exercise4"></div>
+
+  <script>
+    // Exercise 4: Confirm dialog to check if user is a student
+    const isStudent = confirm("Are you a student?");
+
+    if (isStudent) {
+      document.getElementById("exercise4").innerHTML = "<p>Welcome student</p>";
+    } else {
+      document.getElementById("exercise4").innerHTML = "<p>Sorry, this page is for students only</p>";
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise 5 - JavaScript BOM & DOM</title>
+</head>
+<body>
+
+  <h2>Exercise 5</h2>
+
+  <div id="exercise5"></div>
+  <button onclick="randomImage()">Show Random Image</button>
+
+  <script>
+    // Exercise 5: Array of images
+    var images = [
+      "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
+      "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+      "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg"
+    ];
+
+    // Show the first image initially
+    document.getElementById("exercise5").innerHTML =
+      '<img src="' + images[0] + '" alt="Example image" width="300">';
+
+    // Function to show a random image
+    function randomImage() {
+      let index = Math.floor(Math.random() * images.length);
+      document.getElementById("exercise5").innerHTML =
+        '<img src="' + images[index] + '" alt="Random image" width="300">';
+    }
+  </script>
+
+</body>
+</html>
+
