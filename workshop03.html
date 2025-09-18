@@ -1,0 +1,122 @@
+const btn1 = document.createElement("button");
+btn1.innerText = "Click me";
+document.body.appendChild(btn1);
+
+const btn2 = document.createElement("button");
+btn2.innerText = "Show table";
+document.body.appendChild(btn2);
+
+const btn3 = document.createElement("button");
+btn3.innerText = "Geolocation";
+document.body.appendChild(btn3);
+
+// Button 1: Alert + date
+btn1.onclick = function() {
+    alert("You clicked me! " + new Date());
+};
+
+// Button 2: Show table
+function showTable() {
+    document.body.innerHTML += "<br><table border='1' cellpadding='5'><tr><th>Name</th><th>Position</th><th>Salary</th></tr>";
+    document.body.innerHTML += "<tr><td>Tiger Nixon</td><td>System Architect</td><td>$320,800</td></tr>";
+    document.body.innerHTML += "<tr><td>Garrett Winters</td><td>Accountant</td><td>$170,750</td></tr>";
+    document.body.innerHTML += "<tr><td>Ashton Cox</td><td>Junior Technical Author</td><td>$86,000</td></tr>";
+    document.body.innerHTML += "<tr><td>Cedric Kelly</td><td>Senior Javascript Developer</td><td>$433,060</td></tr>";
+    document.body.innerHTML += "<tr><td>Airi Satou</td><td>Accountant</td><td>$162,700</td></tr>";
+    document.body.innerHTML += "</table><br>";
+}
+btn2.onclick = showTable;
+
+// Button 3: Geolocation
+btn3.onclick = function() {
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            console.log("Latitude:", lat, "Longitude:", lon);
+            document.body.innerHTML += `<p>Latitude: ${lat}, Longitude: ${lon}</p>`;
+            window.location.href = `https://www.google.com/maps?q=${lat},${lon}`;
+        }, function(error) {
+            alert("Geolocation not allowed or available!");
+        });
+    } else {
+        alert("Geolocation not supported by your browser.");
+    }
+};
+
+
+
+const ex2 = document.createElement("h2");
+ex2.innerText = "Exercise 2";
+document.body.appendChild(ex2);
+
+ex2.onmouseover = function() {
+    console.log("Stepped over my a mouse!");
+};
+ex2.onmouseout = function() {
+    alert("Bye bye mouse!");
+};
+
+
+
+
+
+const form = document.createElement("form");
+const textarea = document.createElement("textarea");
+textarea.id = "textdata";
+form.appendChild(textarea);
+form.appendChild(document.createElement("br"));
+
+const charCount = document.createElement("span");
+charCount.id = "charcount";
+form.appendChild(charCount);
+
+const sendBtn = document.createElement("button");
+sendBtn.type = "button";
+sendBtn.innerText = "Send me";
+form.appendChild(document.createElement("br"));
+form.appendChild(sendBtn);
+
+document.body.appendChild(form);
+
+let keyPresses = 0;
+
+textarea.onfocus = function() {
+    textarea.value = "Please fill in the form with proper data.";
+    textarea.style.backgroundColor = "#e0f7fa";
+};
+
+textarea.onkeydown = function() {
+    keyPresses++;
+    charCount.innerText = "Key presses: " + keyPresses;
+};
+
+sendBtn.onclick = function() {
+    if(textarea.value.trim() === "") {
+        alert("Textarea is empty! Please fill it in.");
+    } else {
+        alert("Form submitted!");
+    }
+};
+
+
+
+const coordsHeading = document.createElement("h2");
+coordsHeading.id = "coords";
+coordsHeading.innerText = "Mouse Coordinates";
+document.body.appendChild(coordsHeading);
+
+const coordsDiv = document.createElement("div");
+coordsDiv.id = "coordinates";
+coordsDiv.style.width = "400px";
+coordsDiv.style.height = "200px";
+coordsDiv.style.border = "1px solid black";
+document.body.appendChild(coordsDiv);
+
+coordsDiv.onmousemove = function(event) {
+    const x = event.offsetX;
+    const y = event.offsetY;
+    console.log("X:", x, "Y:", y);
+    coordsDiv.innerHTML = `X: ${x}, Y: ${y}`;
+    coordsHeading.innerText = `Mouse Coordinates: X=${x}, Y=${y}`;
+};
